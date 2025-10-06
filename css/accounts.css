@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Montserrat', Calibri, 'Trebuchet MS', sans-serif;
+    border: 1px solid violet;
+}
+
+.login-container {
+    display: flex;
+    min-height: 100vh;
+    min-width: 100vw;
+    background-color: rgb(255, 255, 255);
+}
+
+.login-dialog {
+    display: flex;
+    margin: auto;
+    width: 15%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: beige;
+    width: fit-content;
+    justify-content: center;
+    align-content: center;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.login-dialog .title {
+    text-decoration: none;
+    text-align: center;
+}
+
+.login-dialog > form {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    justify-content: center;
+    align-content: center;
+    gap: 10px;
+    padding: 10px;
+    margin: auto;
+}
+
+.input-container {
+    position: relative;
+}
+
+.input-container > label {
+    position: absolute;
+    top: 0.5rem;
+    left: 1rem;
+    transition: all .3s ease;
+}
+
+.input-container input:focus + label,
+.input-container input:valid + label {
+    font-size: 12px;
+    top: -.5rem;
+}
+
+.input-container input:focus,
+.input-container input:valid {
+    border-bottom: 2px solid blueviolet;
+}
+
+input[type=text],
+input[type=password] {
+    padding: 10px 20px;
+    width: 25vw;
+    border: none;
+    border-bottom: 2px solid transparent;
+    outline: none;
+    font-size: inherit;
+    transition: all .3s ease;
+}
+
+.button-actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.button-actions button {
+    padding: 10px;
+    font-size: 15px;
+}
+

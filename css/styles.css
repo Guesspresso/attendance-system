@@ -1,0 +1,218 @@
+:root {
+    --prime-clr: #d49b59;
+    --sec-clr: #cca859;
+    --bg-clr: #fff;
+    --sec-bg-clr: #f2f2f2;
+    --text-clr: #333;
+    --form-clr: #b0b3c5;
+    --success-clr: #4caf50;
+    --error-clr: #c62828;
+    --font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-clr);
+    font-family: var(--font-family);
+    padding: 24px;
+    margin: 0;
+    min-height: 100vh;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.header h1 {
+    font-size: 1.875rem;
+    /* 30px */
+    font-weight: 700;
+    margin: 0;
+}
+
+.header-meta {
+    font-size: 0.875rem;
+    /* 14px */
+    color: var(--color-text-secondary);
+    display: flex;
+    align-items: center;
+}
+
+.header-meta a {
+    color: var(--color-brand);
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 1rem;
+}
+
+.header-meta a:hover {
+    text-decoration: underline;
+}
+
+.main {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.metric-cards {
+    grid-column: 1 / span 3;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 32px;
+    flex-direction: row;
+}
+
+.metric-card {
+    flex: 1;
+    background-color: var(--color-card-bg);
+    padding: 24px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    border-top: 4px solid;
+    min-width: 0;
+}
+
+.metric-card .title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--color-text-secondary);
+    margin-bottom: 4px;
+}
+
+.metric-card .value {
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.metric-caption {
+    font-size: 0.875rem;
+    color: #9ca3af;
+    margin-top: 4px;
+}
+
+.content-card {
+    background-color: var(--color-card-bg);
+    padding: 32px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+
+.content-card h2 {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.event-item {
+    margin: 10px;
+    padding: 10px
+}
+
+.leave-requests {
+    margin: 20px auto 32px;
+    max-width: 1200px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.department-dialog {
+    display: flex;
+    flex-direction: column;
+    width: inherit;
+}
+
+.department-dialog div:nth-child(1) {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.department-dialog form {
+    margin: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+label {
+    font-size: 1.2rem;
+}
+
+.button-options {
+    display: flex;
+    flex-direction: row;
+    position: fixed;
+    gap: 1rem;
+    bottom: 3rem;
+    right: 5rem;
+}
+
+.button-options * {
+    padding: 1rem;
+    border-radius: 2ch;
+}
+
+.employee-dialog form {
+    margin: 2rem;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: space-evenly;
+}
+
+.employee-dialog div {
+    display: flex;
+    flex-direction: column;
+}
+
+.leave {
+    padding: 10px;
+    border-radius: 15px;
+    outline: none;
+}
+
+.metric-card.present {
+    border-color: var(--color-brand);
+}
+
+.metric-card.present .metric-value {
+    color: var(--color-brand);
+}
+
+.metric-card.late {
+    border-color: var(--color-warning);
+}
+
+.metric-card.late .metric-value {
+    color: var(--color-warning);
+}
+
+.metric-card.on-leave {
+    border-color: var(--color-info);
+}
+
+.metric-card.on-leave .metric-value {
+    color: var(--color-info);
+}
+
+.metric-card.absent {
+    border-color: var(--color-danger);
+}
+
+.metric-card.absent .metric-value {
+    color: var(--color-danger);
+}

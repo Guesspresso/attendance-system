@@ -1,0 +1,30 @@
+.employee-list {
+    width: 100%;
+}
+
+.filter {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.filter-dialog {
+    display: flex;
+}
+
+.employee-list table {
+    width: 100%;
+    text-align: center;
+}
+
+.employee-info {
+    display: flex;
+    margin: 30px;
+    justify-content: space-evenly;
+}
+
+.employee-info .image {
+    overflow: hidden;
+    border-radius: 50%;
+    object-fit: cover;
+}
