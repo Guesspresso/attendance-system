@@ -1,0 +1,87 @@
+form {
+    display: flex;
+    width: fit-content;
+    gap: 20px;
+}
+
+.form-group {
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    gap: 10px;
+}
+
+.form-row {
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    gap: 10px;
+}
+
+.input-container {
+    position: relative;
+}
+
+.input-container > label {
+    position: absolute;
+    top: 0.5rem;
+    left: 1rem;
+    background-color: white;
+    transition: all .3s ease;
+}
+
+.input-container input[value] + label,
+.input-container input:focus + label,
+.input-container input:valid + label ,
+.input-container textarea:focus + label {
+    font-size: 12px;
+    top: -.5rem;
+}
+
+
+.input-container input:focus,
+.input-container input:valid {
+    border-bottom: 2px solid blueviolet;
+}
+
+.input-container input:read-only:focus {
+    border-bottom: 2px solid transparent;
+}
+.input-container input:read-only {
+    background-color: lightgray;
+}
+
+input[type=text],
+input[type=password] {
+    padding: 10px 20px;
+    width: fit-content;
+    border: none;
+    border-bottom: 2px solid transparent;
+    outline: none;
+    font-size: inherit;
+    transition: all .3s ease;
+}
+
+
+textarea {
+    font-size: 25px;
+    width: fit-content;
+    padding: 30px 20px;
+    border: 1px solid red;
+    border-bottom: 2px solid transparent;
+    outline: none;
+    font-size: inherit;
+    transition: all .3s ease;
+}
+
+.input-container textarea:focus {
+    padding: 10px 20px;
+    border: none;
+    border-bottom: 2px solid blueviolet;
+}
+
+input[type=date],
+select {
+    padding: 10px;
+}
