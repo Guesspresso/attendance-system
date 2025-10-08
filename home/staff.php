@@ -53,7 +53,11 @@ session_start();
 
         <div class="chart-container">
             <h2>Department Attendance</h2>
+            <?php include "../components/dept-attendance.php"?>
+            <button popovertarget="dept-attn">More info</button>
             <canvas id="myChart" width="400" height="200" class="attendance-chart"></canvas>
+            <h2>Your Attendance</h2>
+            <canvas id="myChar" width="400" height="200" class="attendance-chart"></canvas>
         </div>
 
         <div class="content-card events-sec">
@@ -139,6 +143,41 @@ session_start();
 </body>
 <script defer>
         var ctx = document.getElementById('myChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'line', // Type of chart (bar, line, pie, etc.)
+            data: {
+                labels: ['Jan', 'feb', 'Mar', 'Apr', 'May', 'Jun'], // Labels on the x-axis
+                datasets: [{
+                    label: 'Attendance',  // Label for the dataset
+                    data: [12, 19, 3, 5, 2, 3], // Data for the y-axis
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ], // Bar color
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ], // Border color
+                    borderWidth: 1 // Border width
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true // Ensures the y-axis starts at 0
+                    }
+                }
+            }
+        });
+        var ctx = document.getElementById('myChar').getContext('2d');
         var myChart = new Chart(ctx, {
             type: 'line', // Type of chart (bar, line, pie, etc.)
             data: {

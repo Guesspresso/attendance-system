@@ -75,7 +75,8 @@ if ($_SESSION["role"] == "admin") {
     </div>
 
     <h2>Leave requests</h2> 
-    <a href="">File a leave?</a>
+    <?php include "../components/leave.php"?>
+    <button popovertarget="leave-dialog">File a leave</button>
     <div class="leave-requests">
         <div class="list">
             <div class="item">

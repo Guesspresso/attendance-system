@@ -83,49 +83,6 @@
         </div>
 
         <!-- Leave Request Form (Middle Column on Desktop) -->
-        <section class="content-card leave-section">
-            <h2>Request for leave</h2>
-            
-            <div class="form-context">
-                <p><strong>Applicant:</strong> jvaun (HR Department)</p>
-                <p><strong>Date Filed:</strong> 2025-10-05</p>
-            </div>
-
-            <form>
-                <div class="form-group">
-                    <label for="leave-type">Leave Type <span class="required-star">*</span></label>
-                    <select id="leave-type" name="leave-type" required class="form-select">
-                        <option value="">-- Select Type --</option>
-                        <option value="vacation">Vacation</option>
-                        <option value="sick">Sick Leave</option>
-                        <option value="personal">Personal Leave</option>
-                        <option value="maternity">Maternity/Paternity</option>
-                    </select>
-                </div>
-
-                <div class="form-group form-date-group">
-                    <div class="date-input-wrapper">
-                        <label for="from-date">From Date <span class="required-star">*</span></label>
-                        <input type="date" id="from-date" name="from-date" required class="form-input">
-                    </div>
-                    <div class="date-input-wrapper">
-                        <label for="to-date">To Date <span class="required-star">*</span></label>
-                        <input type="date" id="to-date" name="to-date" required class="form-input">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="reason">Reason <span class="required-star">*</span></label>
-                    <textarea id="reason" name="reason" rows="4" required class="form-textarea"></textarea>
-                </div>
-
-                <div class="form-group">
-                    <button type="submit" class="btn-submit">
-                        Submit Request
-                    </button>
-                </div>
-            </form>
-        </section>
         
         <!-- Upcoming Events (Sidebar/Right Column on Desktop) -->
         <div class="content-card events-section">

@@ -1,7 +1,7 @@
 :root {
     --prime-clr: #d49b59;
     --sec-clr: #cca859;
-    --bg-clr: #fff;
+    --bg-clr: #fff2dc;
     --sec-bg-clr: #f2f2f2;
     --text-clr: #333;
     --form-clr: #b0b3c5;
@@ -14,7 +14,6 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    border: 1px solid red
 }
 
 body {
@@ -23,6 +22,7 @@ body {
     padding: 24px;
     margin: 0;
     min-height: 100vh;
+    background-color: var(--bg-clr);
 }
 
 .header {
@@ -164,15 +164,14 @@ label {
 
 .button-options {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     position: fixed;
-    gap: 1rem;
-    bottom: 3rem;
-    right: 5rem;
+    bottom: 2rem;
+    right: 3rem;
 }
 
 .button-options * {
-    padding: 1rem;
+    padding: 10px;
     border-radius: 2ch;
 }
 
