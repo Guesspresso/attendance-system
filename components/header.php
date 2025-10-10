@@ -58,10 +58,22 @@
     .header-meta a:hover {
         text-decoration: underline;
     }
+
+    a > i {
+        padding: 5px 10px;
+        color: var(--color-brand);
+        transform: translateY(15%);
+        display: inline-block;
+    }
+    a > i:hover {
+        backdrop-filter: contrast(10);
+        transform: translateY(15%);
+        display: inline-block;
+    }
 </style>
 
 <header class="header">
-    <h1>Welcome, <?php isset($_SESSION["firstname"]) ? print htmlspecialchars($_SESSION['firstname']) : print "Guest" ?>
+    <h1><a href="../home/index.php"><i class="ri-home-4-line"></i></a>  Welcome, <?php isset($_SESSION["firstname"]) ? print htmlspecialchars($_SESSION['firstname']) : print "Guest" ?>
     </h1>
     <div class="header-meta">
         <span id="current-time"></span>

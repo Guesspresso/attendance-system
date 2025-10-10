@@ -1,62 +1,79 @@
-<?php 
-include "../components/db.php";
-session_start();
-?>
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<section id="add-new-employee" popover class="add-new-employee">
     <link rel="stylesheet" href="../css/styles.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css">
-    <title>Dashboard</title>
-</head>
-
-<body>
-    <div class="container">
-        <?php include_once "../components/sidebar.php"?>
-        <div class="main">
-            <div class="main-content">
-                <h1><?= isset($_SESSION['username']) ? htmlspecialchars($_SESSION['username']) : "Guest"?></h1>
-                <h3>current time</h3>
+    <div class="employee-dialog">
+        <h1 class="title">New employee</h1>
+        <form action="" class="employee-form">
+            <div class="column">
+                <h3>Facial details</h3>
+                <div class="" style="width: 100%; height:100%; background-color: gray;"></div>
             </div>
-            <div class="employee-dialog">
-                <h1>New employee</h1>
-                <form action="">
-                    <div class="employee-info">
-                        <h1>Employee info</h1>
-                        <label for="">Username
-                            <input type="text" name="" id="">
+                <div class="column">
+                    <h3>Employee Info</h3>
+                    <input type="text" name="" id="">
+                    <label for="">Username
                         </label>
+                        <input type="text" name="" id="">
                         <label for="">First name
-                            <input type="text" name="" id="">
-                        </label>
+                            </label>
+                        <input type="text" name="" id="">
                         <label for="">Last name
-                            <input type="text" name="" id="">
+                            </label>
+                </div>
+                <div class="column">
+                    <h3>Work Info</h3>
+                    <input type="text" name="" id="">
+                    <label for="">Role</label>
+                    
+                    <input type="text" name="" id="">
+                    <label for="">Department
                         </label>
-                    </div>
-                    <div class="work-info">
-                        <h1>work info</h1>
-                        <label for="">Role
-                            <input type="text" name="" id="">
+                    
+                    <input type="text" name="" id="">
+                    <label for="">Email
                         </label>
-                        
-                        <label for="">Department
-                            <input type="text" name="" id="">
-                        </label>
-                        
-                        <label for="">Email
-                            <input type="text" name="" id="">
-                        </label>
-                    </div>
-                </form>
-            </div>
-            <div class="button-options">
-                <button type="submit">add</button>
-                <button type="submit" class="cancel" onclick="window.history.back()">cancel</button>
-            </div>
-        </div>
+                </div>
+        </form>
     </div>
-</body>
+    <div class="button-options">
+        <button type="submit" class="">Rescan</button>
+        <button type="submit" class="add-new-btn">Add</button>
+    </div>
+</section>
+
+<style>
+    section.add-new-employee {
+        position: sticky;
+        min-height: 85vh;
+        min-width: 85vw;
+        margin: auto;
+        padding: 2%;
+        border-radius: 25px;
+    }
+
+    .add-new-employee .button-options {
+        position: absolute;
+    }
+
+    .employee-dialog .title {
+        font-size: 1.8em;
+        font-weight: 500;
+        /* Slightly lighter title */
+        color: #333;
+        padding-bottom: 15px;
+        border-bottom: 1px solid #eee;
+        /* Subtle separator */
+        margin-bottom: 25px;
+    }
+
+    .employee-form h3 {
+        font-size: 1.2em;
+        font-weight: bold;
+        color: #555;
+        margin-bottom: 20px;
+        border-left: 4px solid #007bff; 
+        padding-left: 10px;
+    }
+    .column {
+        flex: 1;
+    }
+</style>

@@ -1,5 +1,23 @@
 <?php 
 session_start();
+include("../components/db.php");
+$popup_html = '
+    <div id="reusable-popup">
+        <div id="popup-header"></div>
+        <div id="popup-body"></div>
+        <button id="close-popup">Close</button>
+    </div>
+';
+
+$sql = "select * from announcement";
+$get_announcements = $conn->prepare($sql);
+$get_announcements->execute();
+$announcements = $get_announcements->fetchAll(PDO::FETCH_ASSOC);
+
+$sql2 = "select * from events";
+$get_events = $conn->prepare($sql2);
+$get_events->execute();
+$events = $get_events->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -10,7 +28,7 @@ session_start();
     <link rel="stylesheet" href="../css/staffstyles.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>  
-
+    
     <title>Administrator</title>
 </head>
 <body>
@@ -41,14 +59,16 @@ session_start();
         </div>
 
         <div class="content-card announcements">
-            <div class="item">
-                <p class="title">
-                    Announcement title
-                </p>
-                <p class="description">
-                    Announcement description
-                </p>
-            </div>
+            <h4>Announcements</h4>
+            <?php foreach ($announcements as $announcement): ?>
+                <a href="#" 
+                    class="announcement-link"
+                    data-title="<?php echo htmlspecialchars($announcement['title'] . ", from " . $announcement['sender'] ?? 'No Title'); ?>"
+                    data-content="<?php echo htmlspecialchars($announcement['content'] ?? 'No Content'); ?>">
+                    <?php echo htmlspecialchars($announcement['title'] ?? 'View Details'); ?>
+                </a>
+            <?php endforeach; ?>
+            <?php include("../components/announcement.php")?>
         </div>
 
         <div class="chart-container">
@@ -63,24 +83,18 @@ session_start();
         <div class="content-card events-sec">
             <h3>On this month</h3>
             <div class="event-list">
-                <div class="event-item">
-                    <div class="">
-                        <p class="event-name">Event title</p>
-                        <p class="event-date">date</p>
-                    </div>
-                </div>
-                <div class="event-item">
-                    <div class="">
-                        <p class="event-name">Event title</p>
-                        <p class="event-date">date</p>
-                    </div>
-                </div>
-                <div class="event-item">
-                    <div class="">
-                        <p class="event-name">Event title</p>
-                        <p class="event-date">date</p>
-                    </div>
-                </div>
+                <h6>View event details</h6>
+                <?php foreach ($events as $event): ?>
+                    <p class="event-name">
+                        <a href="#" 
+                        class="event-link" 
+                        data-title="<?php echo htmlspecialchars($event['event_title'] ?? 'No Title'); ?>"
+                        data-content="<?php echo htmlspecialchars($event['event_description'] ?? 'No Description');?>">
+                    </a>
+                </p>
+                <p class="event-date"><?= htmlspecialchars($event['event_date'])?></p>
+                <?php endforeach; ?>
+                <?php include("../components/events.php");?>
             </div>
         </div>
 
@@ -141,12 +155,50 @@ session_start();
         </div>
 
         <div class="button-options">
-            <a href="../employee/list.php"><button><i class="ri-people-line"></i>Employees</button></a>
+            <a href="../employee/list.php"><button><i class="ri-user-line"></i>Employees</button></a>
             <a href="../department/list.php"><button><i class="ri-community-line"></i> Department</button></a>
         </div>
     </div>
 </body>
 <script defer>
+    const popup = document.getElementById('reusable-popup');
+    const header = document.getElementById('popup-header');
+    const body = document.getElementById('popup-body');
+    const closeButton = document.getElementById('close-popup');
+    const links = document.querySelectorAll('.announcement-link');
+    
+
+    function hidePopup() {
+        popup.style.display = 'none';
+    }
+
+    links.forEach(link => {
+        link.addEventListener('click', (event) => {
+            event.preventDefault();
+            const title = event.currentTarget.dataset.title;
+            const content = event.currentTarget.dataset.content;
+            header.textContent = title;
+            body.innerHTML = content.replace(/\n/g, '<br>');
+            popup.style.display = 'block';
+        });
+    });
+    closeButton.addEventListener('click', hidePopup);
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && popup.style.display === 'block') {
+            hidePopup();
+        }
+    });
+    
+
+    document.addEventListener('click', (event) => {
+        const isTriggerLink = event.target.classList.contains('announcement-link');
+        const isInsidePopup = popup.contains(event.target);
+        if (popup.style.display === 'block' && !isTriggerLink && !isInsidePopup) {
+            hidePopup();
+        }
+    });
+
         var ctx = document.getElementById('myChart').getContext('2d');
         var myChart = new Chart(ctx, {
             type: 'line', // Type of chart (bar, line, pie, etc.)

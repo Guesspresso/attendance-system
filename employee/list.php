@@ -10,14 +10,14 @@ for ($i = 0; $i < $sql1->columnCount(); $i++) {
 }
 
 $labels = [
-    "employee_id"     => "Control Number",
-    "employee_usn"   => "Username",
-    "employee_fn"  => "First name",
-    "employee_ln"    => "Last name",
-    "employee_role"    => "Role",
-    "employee_dept"    => "Department",
-    "employee_update"    => "Date updated",
-    "employee_create"    => "Date created",
+    "employee_id" => "Employee ID",
+    "employee_usn" => "Username",
+    "employee_fn" => "First name",
+    "employee_ln" => "Last name",
+    "employee_role" => "Role",
+    "employee_dept" => "Department",
+    "employee_update" => "Date updated",
+    "employee_create" => "Date created",
 ];
 
 $employees = $sql1->fetchAll(PDO::FETCH_ASSOC);
@@ -25,91 +25,115 @@ $employees = $sql1->fetchAll(PDO::FETCH_ASSOC);
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../css/staffstyles.css">
+    <link rel="stylesheet" href="../css/liststyles.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css">
-    <title>Dashboard</title>
+    <title>List of Employees</title>
 </head>
 
 <body>
-    <div class="container">
-        <?php include_once "../components/sidebar.php"?>
-        <div class="main">
-            <div class="main-content">
-                    <h1><?= isset($_SESSION['username']) ? htmlspecialchars($_SESSION['username']) : "Guest"?></h1>
-                    <h3>current time</h3>
-                </div>
-            <div class="employee-list">
-                <h1>Employee list</h1>
-                <div class="filter">
-                    <h3>Total number:</h3>
-                    <div class="filter-dialog">
-                        <input type="text" name="" id="">
-                        <button type="submit">Search</button>
-                    </div>
-                </div>
+    <?php include '../components/header.php' ?>
+    <div class="main">
+        <div class="metric-cards">
+            <div class="metric-card employees">
+                <p class="title">Department 1</p>
+                <div class="value">X/X</div>
+                <div class="caption">Present</div>
             </div>
+            <div class="metric-card employees">
+                <p class="title">Department 1</p>
+                <div class="value">X/X</div>
+                <div class="caption">Present</div>
+            </div>
+            <div class="metric-card employees">
+                <p class="title">Department 1</p>
+                <div class="value">X/X</div>
+                <div class="caption">Present</div>
+            </div>
+            <div class="metric-card employees">
+                <p class="title">Department 1</p>
+                <div class="value">X/X</div>
+                <div class="caption">Present</div>
+            </div>
+        </div>
+        <div class="filter">
+            <div class="filter-dialog">
+                <h1>List of employees</h1>
+                <input type="text" name="" id="">
+                <button type="submit" class="search-btn">Search</button>
+            </div>
+        </div>
+        <div class="content-box">
             <table>
-                <tr>
-                <?php foreach ($employee_fields as $field): ?>
-                    <th>
-                        <?= $label = $labels[$field] ?? $field ?>
-                    </th>
-                <?php endforeach; ?>
-                    <th>
-                        Actions
-                    </th>
-                </tr>
-                <?php foreach ($employees as $employee): ?>
+                <thead>
                     <tr>
-                        <td>
-                            <?= $employee["employee_id"] ?>
-                        </td>
-                        <td>
-                            <a href="detail.php?usn=<?= $employee["employee_usn"]?>">
-                                <?= $employee["employee_usn"] ?>
-                            </a>
-                        </td>
-                        <td>
-                            <?= $employee["employee_fn"] ?>
-                        </td>
-                        <td>
-                            <?= $employee["employee_ln"] ?>
-                        </td>
-                        <td>
-                            <?= $employee["employee_role"] ?>
-                        </td>
-                        <td>
-                            <?= $employee["employee_dept"] ?>
-                        </td>
-                        <td>
-                            <?= $employee["is_online"] ?>
-                        </td>
-                        <td>
-                            <?= $employee["employee_update"] ?>
-                        </td>
-                        <td>
-                            <?= $employee["employee_create"] ?>
-                        </td>
-                        <td>
-                            <button>
-                                <i class="ri-pencil-line"></i>
-                            </button>
-                            <button>
-                                <i class="ri-delete-bin-line"></i>
-                            </button>
-                        </td>
+                        <?php foreach ($employee_fields as $field): ?>
+                            <th>
+                                <?= $label = $labels[$field] ?? $field ?>
+                            </th>
+                        <?php endforeach; ?>
+                        <th>
+                            Actions
+                        </th>
                     </tr>
-                <?php endforeach; ?>
+                </thead>
+                <tbody>
+
+                    <?php foreach ($employees as $employee): ?>
+                        <tr>
+                            <td>
+                                <?= $employee["employee_id"] ?>
+                            </td>
+                            <td class="control-num">
+                                <a href="detail.php?usn=<?= $employee["employee_usn"] ?>">
+                                    <?= $employee["employee_usn"] ?>
+                                </a>
+                            </td>
+                            <td>
+                                <?= $employee["employee_fn"] ?>
+                            </td>
+                            <td>
+                                <?= $employee["employee_ln"] ?>
+                            </td>
+                            <td>
+                                <?= $employee["employee_role"] ?>
+                            </td>
+                            <td>
+                                <?= $employee["employee_dept"] ?>
+                            </td>
+                            <td>
+                                <?= $employee["is_online"] ?>
+                            </td>
+                            <td>
+                                <?= $employee["employee_update"] ?>
+                            </td>
+                            <td>
+                                <?= $employee["employee_create"] ?>
+                            </td>
+                            <td>
+                                <button>
+                                    <i class="ri-pencil-line"></i>
+                                </button>
+                                <button>
+                                    <i class="ri-delete-bin-line"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
             </table>
             <div class="button-options">
-                <?php // if ($_SESSION["role"] === "admin"):?>
-                <a href="add.php"><button>Add new</button></a>
-                <?php // endif;?>
+                <?php // if ($_SESSION["role"] === "admin"): ?>
+                <?php include "add.php"?>
+                <button popovertarget="add-new-employee" class="add-new-btn">Add new</button>
+                <?php // endif; ?>
             </div>
         </div>
     </div>
 </body>
+
 </html>

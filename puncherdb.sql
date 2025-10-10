@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 08, 2025 at 08:45 AM
+-- Generation Time: Sep 23, 2025 at 08:18 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -127,22 +127,6 @@ INSERT INTO `employee` (`employee_id`, `employee_usn`, `employee_fn`, `employee_
 (1, 'EMP001', 'john', 'smith', 'admin', 'hr', 1, '2025-09-21', '2025-09-21'),
 (3, 'EMP002', 'jvaun', 'schmidt', 'employee', 'hr', NULL, '2025-09-23', '2025-09-23');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `leave_requests`
---
-
-CREATE TABLE `leave_requests` (
-  `leave_id` int(11) NOT NULL,
-  `employee_usn` int(30) NOT NULL,
-  `department_name` varchar(100) NOT NULL,
-  `leave_filed` timestamp NOT NULL DEFAULT current_timestamp(),
-  `leave_start` date NOT NULL,
-  `leave_end` date NOT NULL,
-  `leave_type` enum('Vacation leave','Sick leave','Parental leave','Family and medical leave','Personal leave','Bereavement leave') NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
 --
 -- Indexes for dumped tables
 --
@@ -178,12 +162,6 @@ ALTER TABLE `employee`
   ADD PRIMARY KEY (`employee_id`);
 
 --
--- Indexes for table `leave_requests`
---
-ALTER TABLE `leave_requests`
-  ADD PRIMARY KEY (`leave_id`);
-
---
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -216,12 +194,6 @@ ALTER TABLE `department`
 --
 ALTER TABLE `employee`
   MODIFY `employee_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `leave_requests`
---
-ALTER TABLE `leave_requests`
-  MODIFY `leave_id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
